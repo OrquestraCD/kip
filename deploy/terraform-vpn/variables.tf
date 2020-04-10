@@ -71,3 +71,21 @@ variable "deploy_to_kubernetes" {
   default     = true
   description = "Whether the generated Kubernetes resources will be applied via kubectl. Disable if you only need the kustomization/ directory generated, and you plan to apply it separately. If enabled, it needs kubectl >= 1.14."
 }
+
+variable "cluster_domain" {
+  type = string
+  default = "cluster.local"
+  description = "The Kubernetes cluster domain, used by pods. See https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/ for more information."
+}
+
+variable "kube_dns" {
+  type = string
+  default = "10.96.0.10"
+  description = "The clusterIP of the main DNS service (usually called kube-dns) in Kubernetes. See https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/ for more information."
+}
+
+variable "local_dns" {
+  type = string
+  default = "169.254.10.20"
+  description = "The IP address used for the local DNS cache pod that will be launched in the VPC to improve DNS performance. See https://kubernetes.io/docs/tasks/administer-cluster/nodelocaldns/ on DNS caching."
+}
